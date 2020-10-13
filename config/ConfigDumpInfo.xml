@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.10">
+	<ConfigVersions>
+		<Metadata name="CommonModule.МодульСервера" id="1e159b17-a53f-472d-a348-390f96181569" configVersion="a03948c50e57f14f8f9cbba70cddadb200000000"/>
+		<Metadata name="CommonModule.МодульСервера.Module" id="1e159b17-a53f-472d-a348-390f96181569.0" configVersion="9c06ef4ef1cec94e87fe097175c85f1100000000"/>
+		<Metadata name="Configuration.Конфигурация" id="4e22445b-7cb3-4b50-a642-df9a4a9dae31" configVersion="34f7b8ba3794e84691667a57014ace1800000000"/>
+		<Metadata name="Configuration.Конфигурация.ManagedApplicationModule" id="bee48079-d5e3-4cc2-9946-cf8512e2c092.6" configVersion="72ad84d32eb75c47a153eba17ec659d500000000"/>
+		<Metadata name="DataProcessor.ОткрытиеАвтотеста" id="61249708-41e2-45ce-a8b9-2cfa7d213e40" configVersion="f8e7d74ad80ebb45a7b76183adccf7aa00000000"/>
+		<Metadata name="DataProcessor.ОткрытиеАвтотеста.Form.Форма" id="955821de-31d8-4516-996d-45a64cf1a4f0" configVersion="ba09a53398d69f479b3a43977a594aa300000000"/>
+		<Metadata name="DataProcessor.ОткрытиеАвтотеста.Form.Форма.Form" id="955821de-31d8-4516-996d-45a64cf1a4f0.0" configVersion="0b939f5eb6ff5c41bd219daa35991a2300000000"/>
+		<Metadata name="Language.Русский" id="93ed5e88-75c3-41d7-8c6a-d5424bd12181" configVersion="3ad858a8a040d44facf4804aab5c16d900000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>

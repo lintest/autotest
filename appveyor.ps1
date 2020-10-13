@@ -11,7 +11,10 @@ Write-Host "Expand archive 1cv8.zip ..."
 Expand-Archive -Force -Path $dist1c -DestinationPath $path
 Set-Content "$path\bin\conf\conf.cfg" "DisableUnsafeActionProtection=.*;"
 
+Write-Host "Create infobase"
+Start-Process "bin\1cv8ct.exe" -ArgumentList "CREATEINFOBASE File=$path\test" -Wait
+Write-Host "Load config..."
+Start-Process "bin\1cv8t.exe" -ArgumentList "DESIGNER /F $path\test /LoadConfigFromFiles $path\config /UpdateDBCfg"  -Wait
 Write-Host "Process autotest..."
 Start-Process "bin\1cv8ct.exe" -ArgumentList "ENTERPRISE /F $path\Test" -Wait
-
 Write-Host "Autotest finished"
