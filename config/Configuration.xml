@@ -183,7 +183,6 @@
 		</Properties>
 		<ChildObjects>
 			<Language>Русский</Language>
-			<CommonModule>МодульСервера</CommonModule>
 			<DataProcessor>ОткрытиеАвтотеста</DataProcessor>
 		</ChildObjects>
 	</Configuration>

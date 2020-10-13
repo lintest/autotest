@@ -12,12 +12,13 @@ Expand-Archive -Force -Path $dist1c -DestinationPath $path
 Set-Content "$path\bin\conf\conf.cfg" "DisableUnsafeActionProtection=.*;"
 
 $config = "$path\config"
-$database = "$path\test"
+$database = "$path\database"
+$autotest = "$path\autotest.epf"
 Write-Host "Create infobase"
 New-Item -ItemType Directory -Force -Path "$database" | Out-Null
 Start-Process "bin\1cv8t.exe" -ArgumentList "CREATEINFOBASE File=$database" -Wait
 Write-Host "Load config..."
 Start-Process "bin\1cv8t.exe" -ArgumentList "DESIGNER /F $database /LoadConfigFromFiles $config /UpdateDBCfg"  -Wait
 Write-Host "Process autotest..."
-Start-Process "bin\1cv8ct.exe" -ArgumentList "ENTERPRISE /F $database" -Wait
+Start-Process "bin\1cv8ct.exe" -ArgumentList "ENTERPRISE /F $database /C $autotest" -Wait
 Write-Host "Autotest finished"
