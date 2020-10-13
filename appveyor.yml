@@ -9,14 +9,6 @@ environment:
 
 build_script:
   - powershell -File appveyor.ps1
-  - echo Create infobase
-  - mkdir testbase
-  - bin\1cv8ct.exe CREATEINFOBASE File=%APPVEYOR_BUILD_FOLDER%\testbase
-  - echo Load config...
-  - bin\1cv8t.exe DESIGNER /F %APPVEYOR_BUILD_FOLDER%\testbase /LoadConfigFromFiles %APPVEYOR_BUILD_FOLDER%\config /UpdateDBCfg
-  - echo Process autotest...
-  - bin\1cv8ct.exe ENTERPRISE /F %APPVEYOR_BUILD_FOLDER%\testbase
-  - echo Autotest finished
 
 cache:
   - 1cv8.zip
