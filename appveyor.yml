@@ -1,0 +1,18 @@
+version: 0.0.1.{build}
+image: Visual Studio 2019
+configuration: Release
+platform: x64
+
+environment:
+  URL_1CV8T:
+    secure: z47uplaqZaQ0ZkroXy0GP00nv6ACPwovtb+EjfPgpS0IlWM6VQd+8apwLfqT9ndX
+
+build_script:
+  - powershell -File appveyor.ps1
+
+cache:
+  - 1cv8.zip
+
+artifacts:
+  - path: autotest.log
+    name: autotest log
