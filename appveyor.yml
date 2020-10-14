@@ -8,7 +8,7 @@ environment:
     secure: z47uplaqZaQ0ZkroXy0GP00nv6ACPwovtb+EjfPgpS1UVp1iZSkRJGz8uOWarUXi
 
 build_script:
-  - curl -fsSL -o 1cv8t.7z -C - %URL_1CV8T%
+  - powershell -File appveyor.ps1
   - 7z x 1cv8t.7z
   - mkdir database
   - bin\1cv8t.exe CREATEINFOBASE File=%CD%/database
