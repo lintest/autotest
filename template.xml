@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites disabled="" errors=""failures="" name="" tests="" time="">
-     <testsuite tests="3">
-          <testcase classname="foo1" name="ASuccessfulTest"/>
-          <testcase classname="foo2" name="AnotherSuccessfulTest"/>
-          <testcase classname="foo3" name="AFailingTest">
-               <failure type="NotEnoughFoo"> details about failure </failure>
-          </testcase>
-     </testsuite>
-</testsuites>
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="1" hostname="appveyor-vm" name="tests.BATest" tests="3" time="0.069" timestamp="2009-12-19T17:58:59">
+     <properties>
+          <property name="file.encoding" value="UTF-8" />
+     </properties>
+     <testcase classname="tests.BATest" name="error" time="0.0060">
+          <error type="java.lang.RuntimeException">java.lang.RuntimeException at tests.BATest.error(BATest.java:11)
+          </error>
+     </testcase>
+     <testcase classname="tests.BATest" name="fail" time="0.0020">
+          <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: at tests.BATest.fail(BATest.java:9)
+          </failure>
+     </testcase>
+     <testcase classname="tests.BATest" name="sucess" time="0.0" />
+     <system-out><![CDATA[here]]></system-out>
+     <system-err><![CDATA[]]></system-err>
+</testsuite>
