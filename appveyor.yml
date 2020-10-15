@@ -19,6 +19,8 @@ build_script:
   - bin\1cv8t.exe DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
   - bin\1cv8ct.exe ENTERPRISE /F %CD%/database /C %CD%/autotest.epf
   - ps: Add-AppveyorTest -Name "Test A" -Filename autotest.epf -Outcome Passed -Duration 1000
+  - appveyor PushArtifact autotest.epf
+  - exit -1
 
 cache:
   - 1cv8t.7z
