@@ -13,7 +13,7 @@ build_script:
   - mkdir database
   - bin\1cv8t.exe CREATEINFOBASE File=%CD%/database
   - bin\1cv8t.exe DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
-  - bin\1cv8ct.exe ENTERPRISE /F %CD%/database /C %CD%/autotest.epf
+  - bin\1cv8ct.exe ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
   - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
 
 cache:
