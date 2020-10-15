@@ -26,3 +26,6 @@ cache:
 artifacts:
   - path: autotest.log
     name: autotest log
+
+  - path: app_port.txt
+    name: app port
