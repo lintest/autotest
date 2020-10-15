@@ -10,6 +10,7 @@ environment:
 build_script:
   - ps: Add-AppveyorMessage "Simple message" -Category Error -Details "Детали ошибки"
   - ps: Add-AppveyorCompilationMessage "Error" -Category Error
+  - if not exitst "success.txt" exit 1
   - ps: if (Test-Path appveyor.ps1 ) { throw "Выход с ошибкой" }
   - powershell -File appveyor.ps1
   - 7z x 1cv8t.7z
