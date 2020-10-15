@@ -8,6 +8,7 @@ environment:
     secure: z47uplaqZaQ0ZkroXy0GP00nv6ACPwovtb+EjfPgpS1UVp1iZSkRJGz8uOWarUXi
 
 build_script:
+  - ps: Add-AppveyorMessage "Simple message" -Category Error -Details "Детали ошибки"
   - ps: Add-AppveyorCompilationMessage "Error" -Category Error
   - ps: if (Test-Path appveyor.ps1 ) { throw "Выход с ошибкой" }
   - powershell -File appveyor.ps1
