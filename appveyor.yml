@@ -10,7 +10,8 @@ environment:
 build_script:
   - ps: Add-AppveyorMessage "Simple message" -Category Error -Details "Детали ошибки"
   - ps: Add-AppveyorCompilationMessage "Error" -Category Error
-  - ps: if (!(Test-Path appveyor1.ps1)) { throw "Выход с ошибкой" }
+  - ps: if (!(Test-Path appveyor.ps1)) { throw "Выход с ошибкой" }
+  - ps: if (!(Test-Path success.txt)) { throw "Выход с ошибкой" }
   - powershell -File appveyor.ps1
   - 7z x 1cv8t.7z
   - mkdir database
