@@ -50,7 +50,7 @@
 	ЗаписатьJSON(ЗаписьJSON, Структура);
 	ТекстJSON = ЗаписьJSON.Закрыть();
 	
-	HTTPЗапрос = Новый HTTPЗапрос("/api/build/messages");
+	HTTPЗапрос = Новый HTTPЗапрос("/api/tests");
 	HTTPЗапрос.УстановитьТелоИзСтроки(ТекстJSON);
 	HTTPЗапрос.Заголовки.Вставить("Content-type", "application/json");
 	HTTPСоединение.ОтправитьДляОбработки(HTTPЗапрос);
