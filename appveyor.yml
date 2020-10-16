@@ -40,9 +40,9 @@ for:
     build_script:
       - ls /opt/1C/v8.3t/x86_64
       - ls /opt/1C/v8.3t/x86_64/1cv8t
-      - /opt/1C/v8.3t/x86_64/1cv8t CREATEINFOBASE File=%CD%/database
-      - /opt/1C/v8.3t/x86_64/bin/1cv8t DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
-      - /opt/1C/v8.3t/x86_64/1cv8ct ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
+      - /opt/1C/v8.3t/x86_64/1cv8t CREATEINFOBASE File=$PWD/database
+      - /opt/1C/v8.3t/x86_64/bin/1cv8t DESIGNER /F $PWD/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
+      - /opt/1C/v8.3t/x86_64/1cv8ct ENTERPRISE /F $PWD/database /C %CD%/VanessaExt.epf
 
   - matrix:
       only:
