@@ -38,11 +38,10 @@ for:
       - sudo dpkg -i 1cv8*.deb
 
     build_script:
-      - ls /opt/1C/v8.3t/x86_64
-      - ls /opt/1C/v8.3t/x86_64/1cv8t
-      - /opt/1C/v8.3t/x86_64/1cv8t CREATEINFOBASE File=$PWD/database
-      - /opt/1C/v8.3t/x86_64/bin/1cv8t DESIGNER /F $PWD/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
-      - /opt/1C/v8.3t/x86_64/1cv8ct ENTERPRISE /F $PWD/database /C %CD%/VanessaExt.epf
+      - ln -s /opt/1C/v8.3t/x86_64 bin
+#      - ./bin/1cv8t CREATEINFOBASE File=$PWD/database
+      - ./bin/1cv8t DESIGNER /F $PWD/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
+      - ./bin/1cv8ct ENTERPRISE /F $PWD/database /C %CD%/VanessaExt.epf
 
   - matrix:
       only:
