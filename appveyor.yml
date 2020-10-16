@@ -4,11 +4,11 @@ configuration: Release
 platform: x64
 
 environment:
-  URL_1CV8T:
+  URL_1CV8TW:
     secure: z47uplaqZaQ0ZkroXy0GP00nv6ACPwovtb+EjfPgpS1UVp1iZSkRJGz8uOWarUXi
-  URL_1CV8L1:
+  URL_1CV8T1:
     secure: z47uplaqZaQ0ZkroXy0GP0FOVp3qut62cSHHfMDZqwC2UPYsageSzwTfzgjG427Bcd4WW4A4w+zhj7WIj58BY5nC8GsFvFAIiQ6PlDJrW9c=
-  URL_1CV8L2:
+  URL_1CV8T2:
     secure: z47uplaqZaQ0ZkroXy0GP0FOVp3qut62cSHHfMDZqwCwOnnLbDfWq0f/s82RVJNl0dS22emRlY8R1r/2dVkoMXDTPxnjV87sr9xW0JCkNyU=
 
   matrix:
@@ -33,8 +33,8 @@ for:
     install:
       - sudo apt update -qq
       - sudo apt install -qq -y libwebkitgtk-3.0-0
-      - ps: if (!(Test-Path 1cv8L1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L1 -OutFile 1cv8L1.deb }
-      - ps: if (!(Test-Path 1cv8L2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L2 -OutFile 1cv8L2.deb }
+      - ps: if (!(Test-Path 1cv8L1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T1 -OutFile 1cv8L1.deb }
+      - ps: if (!(Test-Path 1cv8L2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T2 -OutFile 1cv8L2.deb }
       - sudo dpkg -i 1cv8*.deb
       - ln -s /opt/1C/v8.3t/x86_64 bin
 
@@ -46,7 +46,7 @@ for:
       - 1cv8t.7z
 
     install:
-      - ps: if (!(Test-Path 1cv8t.7z)) { Invoke-WebRequest -Uri $env:URL_1CV8T -OutFile 1cv8t.7z }
+      - ps: if (!(Test-Path 1cv8t.7z)) { Invoke-WebRequest -Uri $env:URL_1CV8TW -OutFile 1cv8t.7z }
       - 7z x 1cv8t.7z
 
 build_script:
