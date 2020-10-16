@@ -36,6 +36,7 @@ for:
       - ps: if (!(Test-Path 1cv8L1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L1 -OutFile 1cv8L1.deb }
       - ps: if (!(Test-Path 1cv8L2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L2 -OutFile 1cv8L2.deb }
       - sudo dpkg -i 1cv8*.deb
+      - ln -s /opt/1C/v8.3t/x86_64 bin
 
   - matrix:
       only:
@@ -45,18 +46,16 @@ for:
       - 1cv8t.7z
 
     install:
-      - ps: if (!(Test-Path 1cv8t.7z)) { Invoke-WebRequest -Uri $env:URL_1CV8 -OutFile 1cv8t.7z }
-
-    build_script:
+      - ps: if (!(Test-Path 1cv8t.7z)) { Invoke-WebRequest -Uri $env:URL_1CV8T -OutFile 1cv8t.7z }
       - 7z x 1cv8t.7z
-      - mkdir database
-      - bin\1cv8t CREATEINFOBASE File=%CD%/database
-      - bin\1cv8t DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
-      - bin\1cv8ct ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
-      - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
 
-before_build:
+build_script:
   - ps: Set-Content -Path app_port.txt -Value ([uri] $env:APPVEYOR_API_URL).Port
+  - mkdir database
+  - bin\1cv8t CREATEINFOBASE File=%CD%/database
+  - bin\1cv8t DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
+  - bin\1cv8ct ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
+  - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
 
 artifacts:
   - path: autotest.log
