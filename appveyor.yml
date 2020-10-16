@@ -52,9 +52,9 @@ for:
 build_script:
   - ps: Set-Content -Path app_port.txt -Value ([uri] $env:APPVEYOR_API_URL).Port
   - mkdir database
-  - bin/1cv8t CREATEINFOBASE File=%CD%/database
-  - bin/1cv8t DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
-  - bin/1cv8ct ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
+  - ./bin/1cv8t CREATEINFOBASE File=%CD%/database
+  - ./bin/1cv8t DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
+  - ./bin/1cv8ct ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
   - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
 
 artifacts:
