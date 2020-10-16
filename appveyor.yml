@@ -33,7 +33,7 @@ for:
     install:
       - ps: if (!(Test-Path 1cv8L1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L1 -OutFile 1cv8L1.deb }
       - ps: if (!(Test-Path 1cv8L2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L2 -OutFile 1cv8L2.deb }
-      - dpkg -i 1cv8*.deb
+      - sudo dpkg -i 1cv8*.deb
 
   - matrix:
       only:
