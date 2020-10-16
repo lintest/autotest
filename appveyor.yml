@@ -32,7 +32,7 @@ for:
 
     install:
       - sudo apt update -qq
-      - sudo apt install -qq -y libwebkitgtk-3.0-0 libfontconfig1 libgsf-1-114 libglib2.0-0 libodbc1 libmagickwand-6.q16-3
+      - sudo apt install -qq -y libwebkitgtk-3.0-0
       - ps: if (!(Test-Path 1cv8L1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L1 -OutFile 1cv8L1.deb }
       - ps: if (!(Test-Path 1cv8L2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8L2 -OutFile 1cv8L2.deb }
       - sudo dpkg -i 1cv8*.deb
