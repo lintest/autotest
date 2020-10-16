@@ -1,4 +1,4 @@
-version: 0.0.2.{build}
+version: 0.0.3.{build}
 image: Visual Studio 2019
 configuration: Release
 platform: x64
@@ -6,15 +6,59 @@ platform: x64
 environment:
   URL_1CV8T:
     secure: z47uplaqZaQ0ZkroXy0GP00nv6ACPwovtb+EjfPgpS1UVp1iZSkRJGz8uOWarUXi
+  URL_1CV8L1:
+    secure: z47uplaqZaQ0ZkroXy0GP0FOVp3qut62cSHHfMDZqwC2UPYsageSzwTfzgjG427Bcd4WW4A4w+zhj7WIj58BY5nC8GsFvFAIiQ6PlDJrW9c=
+  URL_1CV8L2:
+    secure: z47uplaqZaQ0ZkroXy0GP0FOVp3qut62cSHHfMDZqwCwOnnLbDfWq0f/s82RVJNl0dS22emRlY8R1r/2dVkoMXDTPxnjV87sr9xW0JCkNyU=
 
-build_script:
-  - powershell -File appveyor.ps1
-  - 7z x 1cv8t.7z
-  - mkdir database
-  - bin\1cv8t.exe CREATEINFOBASE File=%CD%/database
-  - bin\1cv8t.exe DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
-  - bin\1cv8ct.exe ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
-  - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+      job_name: Linux
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      job_depends_on: Linux
+      job_name: Windows
+
+matrix:
+  fast_finish: true
+
+for:
+  - matrix:
+      only:
+        - job_name: Linux
+
+    cache: 
+      - 1cv8L1.deb
+      - 1cv8L2.deb
+
+    install:
+      - [[ -f 1cv8L1.deb ]] || curl -fsSL -o 1cv8L1.deb $URL_1CV8L1
+      - [[ -f 1cv8L2.deb ]] || curl -fsSL -o 1cv8L2.deb $URL_1CV8L2
+      - dpkg -i 1cv8*.deb
+
+  - matrix:
+      only:
+        - job_name: Windows
+
+    cache: 1cv8t.7z
+
+    after_build:
+      - 7z x 1cv8t.7z
+      - mkdir database
+      - bin\1cv8t.exe CREATEINFOBASE File=%CD%/database
+      - bin\1cv8t.exe DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
+      - bin\1cv8t.exe DESIGNER /F %CD%/database /LoadExternalDataProcessorOrReportFromFiles Example.xml VanessaExt.epf /Out example.log
+      - appveyor PushArtifact VanessaExt.epf
+      - bin\1cv8ct.exe ENTERPRISE /F %CD%/database /C VanessaExt.epf
+      - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
+
+    build_script:
+      - powershell -File appveyor.ps1
+      - 7z x 1cv8t.7z
+      - mkdir database
+      - bin\1cv8t.exe CREATEINFOBASE File=%CD%/database
+      - bin\1cv8t.exe DESIGNER /F %CD%/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
+      - bin\1cv8ct.exe ENTERPRISE /F %CD%/database /C %CD%/VanessaExt.epf
+      - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
 
 cache:
   - 1cv8t.7z
