@@ -33,8 +33,8 @@ for:
     install:
       - sudo apt update -qq
       - sudo apt install -qq -y libwebkitgtk-3.0-0
-      - ps: if (!(Test-Path 1cv8L1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T1 -OutFile 1cv8L1.deb }
-      - ps: if (!(Test-Path 1cv8L2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T2 -OutFile 1cv8L2.deb }
+      - ps: if (!(Test-Path 1cv8T1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T1 -OutFile 1cv8T1.deb }
+      - ps: if (!(Test-Path 1cv8T2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T2 -OutFile 1cv8T2.deb }
       - sudo dpkg -i 1cv8*.deb
       - ln -s /opt/1C/v8.3t/x86_64 bin
 
