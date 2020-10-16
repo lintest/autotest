@@ -32,14 +32,14 @@ for:
 
     install:
       - sudo apt update -qq
-      - sudo apt install -qq -y libwebkitgtk-3.0-0 openbox X11
+      - sudo apt install -qq -y libwebkitgtk-3.0-0 openbox
       - ps: if (!(Test-Path 1cv8T1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T1 -OutFile 1cv8T1.deb }
       - ps: if (!(Test-Path 1cv8T2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T2 -OutFile 1cv8T2.deb }
       - sudo dpkg -i 1cv8*.deb
 
     build_script:
       - ln -s /opt/1C/v8.3t/x86_64 bin
-#      - ./bin/1cv8t CREATEINFOBASE File=$PWD/database
+      - ./bin/1cv8t CREATEINFOBASE File=$PWD/database
       - ./bin/1cv8t DESIGNER /F $PWD/database /LoadConfigFromFiles %CD%/config /UpdateDBCfg
       - ./bin/1cv8ct ENTERPRISE /F $PWD/database /C %CD%/VanessaExt.epf
 
