@@ -1,9 +1,21 @@
-image: ubuntu
+image: Ubuntu1804
 
 environment:
+  URL_1CV8TW:
+    secure: z47uplaqZaQ0ZkroXy0GP00nv6ACPwovtb+EjfPgpS1UVp1iZSkRJGz8uOWarUXi
+  URL_1CV8T1:
+    secure: z47uplaqZaQ0ZkroXy0GP0FOVp3qut62cSHHfMDZqwC2UPYsageSzwTfzgjG427Bcd4WW4A4w+zhj7WIj58BY5nC8GsFvFAIiQ6PlDJrW9c=
+  URL_1CV8T2:
+    secure: z47uplaqZaQ0ZkroXy0GP0FOVp3qut62cSHHfMDZqwCwOnnLbDfWq0f/s82RVJNl0dS22emRlY8R1r/2dVkoMXDTPxnjV87sr9xW0JCkNyU=
+
   APPVEYOR_BAKE_IMAGE: ubuntu-custom
   APPVEYOR_SSH_KEY: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDB5oXHZ2LiqwEdFdwG1q2PFFReycE/MU/C5pQ7FmmTi8TAVpRgfW96wAfqHXq5xK117cYczfzupWKof+jUfpspv94mfkNta8Ny0DqyXKMqmUDFZrxEM8odlf5dNmSKmxGozpTQjmWwN22WZNZX4kKz4fnM1RTq3NWbsIOS/YfcZifCTdLk7eVxlXindXgdGdh7rsjXQMBjKQsZnzevTMmnLqiQKvW4P7i2vRMwzPw3YQTO40nbU/TuPEiZyXRNfobOvbKV5COtDIZUUm6PpbJTWnTuCPkIKm6ImDISgtIf2A+HForJ9bcNikrq8AiJ4ApbmFohxPaBElUom/9uhyqqlzJIqMufncIOlFsHIdD8HkctxvW99kJhURGBFDwNhnu/5ggx7eoZdrrZfAXY7Jt5tnfv1YmvM/Lcwud10LdxcrU4g6bWAYMQEaCKOBZ2CgB4rY/eKa6ldXvJ+r3A853GYlODW8Wvi0doPIQUPQABMLpQP8pnxN7EBCBJzKvC2D1eGp7SY5u2sgm4FfeyY2VO3VEGLAR7eDyWAjfeAmbkDR49mI+gXjo2cG29XKV+TVIo1bDZf+L84V1+pLejmxGanb3cqtuEJh8SJVLh4utAaFlGTT/Je7IykqH0HX67mpZ2zrvb1JzrZN8OrGsbZ5K8rbdMXK86DHpglhSUlH/0Mw== mail@lintest.ru
   APPVEYOR_SSH_BLOCK: true
 
 install:
-- sh: curl -sflL 'https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-ssh.sh' | bash -e -
+  - sudo apt update -qq
+  - sudo apt install -qq -y libwebkitgtk-3.0-0 openbox
+  - ps: if (!(Test-Path 1cv8T1.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T1 -OutFile 1cv8T1.deb }
+  - ps: if (!(Test-Path 1cv8T2.deb)) { Invoke-WebRequest -Uri $env:URL_1CV8T2 -OutFile 1cv8T2.deb }
+  - sudo dpkg -i 1cv8*.deb
+  - sh: curl -sflL 'https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-ssh.sh' | bash -e -
