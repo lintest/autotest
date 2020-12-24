@@ -20,8 +20,8 @@ build_script:
   - mkdir database
   - bin\1cv8t.exe CREATEINFOBASE File=%CD%/database
   - bin\1cv8ct.exe ENTERPRISE /F %CD%/database /Execute VanessaExt.epf /C autotest
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-#  - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
+  - ps: if (!(Test-Path success.txt)) { throw "Имеются ошибки" }
+#  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
   - path: autotest.log
