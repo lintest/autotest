@@ -24,9 +24,9 @@ for:
     install:
       - git clone -q --branch=oscript https://github.com/lintest/tools1c.git oscript
       - cd oscript
-      - dpkg -i *.deb
-      - cp ScriptEngine.HostedScript.dll /usr/share/oscript/bin
-      - cp ScriptEngine.NativeApi.dll /usr/share/oscript/bin
+      - sudo dpkg -i *.deb
+      - sudo cp ScriptEngine.HostedScript.dll /usr/share/oscript/bin
+      - sudo cp ScriptEngine.NativeApi.dll /usr/share/oscript/bin
       - cd ..
 
   - matrix:
