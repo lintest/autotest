@@ -32,7 +32,7 @@ for:
 
     build_script:
       - cd OpenCV
-      - cd oscript test.os
+      - oscript test.os
 
 
   - matrix:
