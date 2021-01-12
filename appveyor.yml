@@ -30,6 +30,11 @@ for:
       - sudo cp ScriptEngine.NativeApi.dll /usr/share/oscript/bin
       - cd ..
 
+    build_script:
+      - cd OpenCV
+      - cd oscript test.os
+
+
   - matrix:
       only:
         - job_name: Windows
