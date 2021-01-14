@@ -26,7 +26,7 @@ for:
       - cd oscript
       - sudo dpkg -i *.deb
       - sudo cp ScriptEngine.HostedScript.dll /usr/share/oscript/bin
-      - sudo cp ScriptEngine.NativeApi??.so /usr/share/oscript/bin
+      - sudo cp ScriptEngine.NativeApi64.so /usr/share/oscript/bin
       - cd ..
 
     build_script:
